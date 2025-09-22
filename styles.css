@@ -1,0 +1,531 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Form Styles */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* Hijri Date Picker Styles */
+.hijri-date-picker {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.hijri-date-picker:hover {
+    border-color: #667eea;
+    background: white;
+}
+
+.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.date-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.date-input-group label {
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.date-input-group .form-select {
+    padding: 12px;
+    font-size: 0.9rem;
+}
+
+.selected-date-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-size: 1.1rem;
+}
+
+.gold-price-link {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 0.8rem;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: #f0f4ff;
+    border: 1px solid #e0e7ff;
+    transition: all 0.2s ease;
+}
+
+.gold-price-link:hover {
+    background-color: #667eea;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+}
+
+.form-input:focus,
+.form-select:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-input::placeholder {
+    color: #a0aec0;
+}
+
+/* Gold Price Input Section */
+.gold-price-input-section {
+    margin-bottom: 30px;
+}
+
+.price-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-input-container .form-input {
+    padding-right: 120px; /* Space for currency suffix */
+}
+
+.currency-suffix {
+    position: absolute;
+    right: 15px;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.input-help {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.exchange-rate-notice {
+    font-size: 0.8rem;
+    color: #f59e0b;
+    background-color: #fef3c7;
+    border: 1px solid #fbbf24;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.currency-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #667eea;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.loading {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.price-card {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+.price-card h3 {
+    color: #8b4513;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.price-display {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.price-display span:first-child {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #8b4513;
+}
+
+.price-display span:last-child {
+    font-size: 1.2rem;
+    color: #8b4513;
+    font-weight: 500;
+}
+
+.price-date {
+    color: #8b4513;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.refresh-btn {
+    background: rgba(139, 69, 19, 0.1);
+    color: #8b4513;
+    border: 2px solid #8b4513;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background: #8b4513;
+    color: white;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Gold Section */
+.gold-section,
+.currency-section {
+    margin-bottom: 30px;
+}
+
+.gold-inputs,
+.currency-inputs {
+    display: grid;
+    gap: 20px;
+}
+
+.gold-input-group,
+.currency-input-group {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.gold-input-group:hover,
+.currency-input-group:hover {
+    border-color: #667eea;
+    background: white;
+}
+
+.gold-input-group label,
+.currency-input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.input-with-conversion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.conversion-text {
+    font-size: 0.9rem;
+    color: #667eea;
+    font-weight: 500;
+    padding: 8px 12px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Calculate Button */
+.calculate-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.calculate-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+
+.calculate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Results Section */
+.results-section {
+    margin-top: 30px;
+}
+
+.results-card {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 15px 30px rgba(72, 187, 120, 0.3);
+}
+
+.results-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item.total {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.result-item.zakah {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.result-label {
+    font-weight: 500;
+}
+
+.result-value {
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header-title {
+        font-size: 2rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .date-inputs {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .price-display {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .price-display span:first-child {
+        font-size: 1.5rem;
+    }
+    
+    .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .result-value {
+        text-align: right;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.8rem;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .form-input,
+    .form-select {
+        padding: 12px;
+    }
+    
+    .calculate-btn {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    background: #fed7d7;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #feb2b2;
+}
+
+/* Success Message */
+.success-message {
+    background: #c6f6d5;
+    color: #2f855a;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #9ae6b4;
+}

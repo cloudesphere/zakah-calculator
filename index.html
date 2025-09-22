@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة الزكاة الإسلامية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header-title">حاسبة الزكاة الإسلامية</h1>
+            <p class="header-subtitle">احسب زكاتك بسهولة ودقة</p>
+        </header>
+
+        <main class="main-content">
+            <div class="form-section">
+                <!-- Country Selection -->
+                <div class="form-group">
+                    <label for="country" class="form-label">اختر البلد</label>
+                    <select id="country" class="form-select" required>
+                        <option value="">اختر البلد</option>
+                        <option value="EGP">مصر (جنيه مصري)</option>
+                        <option value="SAR">السعودية (ريال سعودي)</option>
+                    </select>
+                </div>
+
+                <!-- Date Selection -->
+                <div class="form-group">
+                    <label for="hijri-date" class="form-label">تاريخ حساب الزكاة (هجري)</label>
+                    <div class="hijri-date-picker">
+                        <div class="date-inputs">
+                            <div class="date-input-group">
+                                <label for="hijri-year">السنة</label>
+                                <select id="hijri-year" class="form-select">
+                                    <option value="">السنة</option>
+                                </select>
+                            </div>
+                            <div class="date-input-group">
+                                <label for="hijri-month">الشهر</label>
+                                <select id="hijri-month" class="form-select">
+                                    <option value="">الشهر</option>
+                                    <option value="1">محرم</option>
+                                    <option value="2">صفر</option>
+                                    <option value="3">ربيع الأول</option>
+                                    <option value="4">ربيع الثاني</option>
+                                    <option value="5">جمادى الأولى</option>
+                                    <option value="6">جمادى الثانية</option>
+                                    <option value="7">رجب</option>
+                                    <option value="8">شعبان</option>
+                                    <option value="9">رمضان</option>
+                                    <option value="10">شوال</option>
+                                    <option value="11">ذو القعدة</option>
+                                    <option value="12">ذو الحجة</option>
+                                </select>
+                            </div>
+                            <div class="date-input-group">
+                                <label for="hijri-day">اليوم</label>
+                                <select id="hijri-day" class="form-select">
+                                    <option value="">اليوم</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="selected-date-display" id="selected-hijri-date">
+                            لم يتم اختيار تاريخ
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gold Price Input -->
+                <div class="gold-price-input-section" id="gold-price-input-section" style="display: none;">
+                    <div class="form-group">
+                        <label for="gold-price-input" class="form-label">
+                            سعر الذهب عيار 24 (بالجرام)
+                            <a href="#" id="gold-price-link" class="gold-price-link" target="_blank">
+                                🔗 احصل على السعر للتاريخ المحدد
+                            </a>
+                        </label>
+                        <div class="price-input-container">
+                            <input type="number" id="gold-price-input" class="form-input" min="0" step="0.01" placeholder="أدخل سعر الذهب">
+                            <span class="currency-suffix" id="currency-suffix">جنيه مصري</span>
+                        </div>
+                        <div class="currency-loading" id="currency-loading" style="display: none;">
+                            <span class="loading"></span>
+                            جاري تحويل العملات...
+                        </div>
+                        <div class="exchange-rate-notice" id="exchange-rate-notice" style="display: none;">
+                            جاري جلب الأسعار التاريخية...
+                        </div>
+                        <p class="input-help">أدخل سعر الذهب عيار 24 للجرام الواحد للتاريخ المحدد</p>
+                    </div>
+                </div>
+
+                <!-- Gold Quantities -->
+                <div class="gold-section">
+                    <h3 class="section-title">كمية الذهب (بالجرام)</h3>
+                    <div class="gold-inputs">
+                        <div class="gold-input-group">
+                            <label for="gold-18k">ذهب عيار 18</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="gold-18k" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="gold-18k-converted">0</span> جرام عيار 24</span>
+                            </div>
+                        </div>
+                        <div class="gold-input-group">
+                            <label for="gold-21k">ذهب عيار 21</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="gold-21k" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="gold-21k-converted">0</span> جرام عيار 24</span>
+                            </div>
+                        </div>
+                        <div class="gold-input-group">
+                            <label for="gold-24k">ذهب عيار 24</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="gold-24k" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="gold-24k-converted">0</span> جرام عيار 24</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Currency Inputs -->
+                <div class="currency-section">
+                    <h3 class="section-title">الأموال النقدية</h3>
+                    <div class="currency-inputs">
+                        <div class="currency-input-group">
+                            <label for="currency-egp">جنيه مصري</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="currency-egp" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="currency-egp-converted">0</span> <span class="target-currency">جنيه مصري</span></span>
+                            </div>
+                        </div>
+                        <div class="currency-input-group">
+                            <label for="currency-sar">ريال سعودي</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="currency-sar" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="currency-sar-converted">0</span> <span class="target-currency">جنيه مصري</span></span>
+                            </div>
+                        </div>
+                        <div class="currency-input-group">
+                            <label for="currency-usd">دولار أمريكي</label>
+                            <div class="input-with-conversion">
+                                <input type="number" id="currency-usd" class="form-input" min="0" step="0.01" placeholder="0">
+                                <span class="conversion-text">= <span id="currency-usd-converted">0</span> <span class="target-currency">جنيه مصري</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculate Button -->
+                <button id="calculate-btn" class="calculate-btn" disabled>
+                    احسب الزكاة
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="results-section" style="display: none;">
+                <div class="results-card">
+                    <h3>نتيجة حساب الزكاة</h3>
+                    <div class="result-item">
+                        <span class="result-label">إجمالي الذهب عيار 24:</span>
+                        <span class="result-value" id="total-gold">0 جرام</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">قيمة الذهب:</span>
+                        <span class="result-value" id="gold-value">0 جنيه مصري</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">إجمالي الأموال النقدية:</span>
+                        <span class="result-value" id="total-cash">0 جنيه مصري</span>
+                    </div>
+                    <div class="result-item total">
+                        <span class="result-label">إجمالي الثروة:</span>
+                        <span class="result-value" id="total-wealth">0 جنيه مصري</span>
+                    </div>
+                    <div class="result-item zakah">
+                        <span class="result-label">الزكاة الواجبة (2.5%):</span>
+                        <span class="result-value" id="zakah-amount">0 جنيه مصري</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
